@@ -1,8 +1,8 @@
 <template>
   <div id="hero" class="grid md:grid-cols-3 gap-2 sm:gap-4 p-2 sm:p-6 hero-section">
     <div class="rounded-xl md:col-span-2 sm:rounded-3xl p-4 sm:p-10 bg-gradient-to-br from-purple-100 via-purple-50 to-blue-50 flex flex-col justify-center relative overflow-hidden hero-content">
-      <!-- Effet de particules en arrière-plan -->
-      <div class="absolute inset-0 pointer-events-none">
+      <!-- Effet de particules en arrière-plan (désactivé sur appareils moins puissants) -->
+      <div v-if="!isLowPerformanceDevice" class="absolute inset-0 pointer-events-none">
         <div
           v-for="particle in heroParticles"
           :key="particle.id"
@@ -99,6 +99,10 @@ import {
   MessageCircle as MessageCircleIcon,
   Phone as PhoneIcon
 } from 'lucide-vue-next'
+import { usePerformance } from '~/composables/usePerformance'
+
+// Détection des performances
+const { isLowPerformanceDevice } = usePerformance()
 
 // Animation de typing pour le titre
 const fullText = "Hey, moi c'est Cedric Mungobo"
@@ -116,16 +120,16 @@ const typeText = async () => {
   }
 }
 
-// Génération des particules pour la hero
+// Génération des particules pour la hero (réduit pour les performances)
 const generateHeroParticles = () => {
-  const particleCount = 15
+  const particleCount = window.innerWidth < 768 ? 6 : 10
   for (let i = 0; i < particleCount; i++) {
     heroParticles.value.push({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
       delay: Math.random() * 3,
-      duration: 4 + Math.random() * 3
+      duration: 5 + Math.random() * 3
     })
   }
 }
@@ -165,10 +169,11 @@ onMounted(() => {
   51%, 100% { opacity: 0; }
 }
 
-/* Effet de glow sur le sous-titre */
+/* Effet de glow sur le sous-titre (optimisé) */
 .glow-text {
   text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-  animation: glow 3s ease-in-out infinite alternate;
+  animation: glow 4s ease-in-out infinite alternate;
+  will-change: text-shadow;
 }
 
 @keyframes glow {
@@ -176,7 +181,7 @@ onMounted(() => {
   to { text-shadow: 0 0 30px rgba(139, 92, 246, 0.6), 0 0 40px rgba(139, 92, 246, 0.4); }
 }
 
-/* Particules de la hero section */
+/* Particules de la hero section (optimisées) */
 .hero-particle {
   position: absolute;
   width: 3px;
@@ -185,6 +190,8 @@ onMounted(() => {
   border-radius: 50%;
   animation: heroFloat infinite ease-in-out;
   box-shadow: 0 0 8px rgba(139, 92, 246, 0.7);
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 @keyframes heroFloat {
@@ -264,6 +271,25 @@ onMounted(() => {
 
   .glow-text {
     text-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+  }
+}
+
+/* Respect des préférences utilisateur pour les animations réduites */
+@media (prefers-reduced-motion: reduce) {
+  .hero-section,
+  .hero-content,
+  .cursor-blink,
+  .glow-text,
+  .hero-particle {
+    animation: none !important;
+  }
+
+  .hero-section a {
+    transition: none !important;
+  }
+
+  .hero-section a::before {
+    display: none !important;
   }
 }
 </style>

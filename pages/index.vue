@@ -121,6 +121,23 @@ a, button, [role="button"] {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Optimisations pour les appareils moins puissants */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* Effet de sélection personnalisé */
 ::selection {
   background: rgba(139, 92, 246, 0.3);
