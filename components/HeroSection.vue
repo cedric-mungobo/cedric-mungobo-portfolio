@@ -77,7 +77,7 @@
       <!-- Mobile: Image en pleine largeur -->
       <div class="md:hidden">
         <div class="w-full h-80 sm:h-80">
-          <img src="/images/me.JPG" class="w-full h-full object-cover" alt="Photo de Cedric Mungobo">
+          <img src="/images/me.JPG" class=" object-cover" alt="Photo de Cedric Mungobo">
         </div>
       </div>
       <!-- Desktop: Image plus grande avec plus d'espace -->
