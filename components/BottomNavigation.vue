@@ -17,7 +17,7 @@
           <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center icon-container">
             <GithubIcon class="w-4 h-4 text-gray-700" />
           </div>
-          <span class="text-xs text-gray-600 font-medium">GitHub</span>
+          <span class="text-sm text-gray-800 font-semibold">GitHub</span>
         </a>
 
         <!-- Téléphone -->
@@ -29,7 +29,7 @@
           <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center icon-container">
             <PhoneIcon class="w-4 h-4 text-blue-600" />
           </div>
-          <span class="text-xs text-gray-600 font-medium">Appeler</span>
+          <span class="text-sm text-gray-800 font-semibold">Appeler</span>
         </a>
 
         <!-- WhatsApp -->
@@ -43,7 +43,7 @@
           <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center icon-container">
             <MessageCircleIcon class="w-4 h-4 text-green-600" />
           </div>
-          <span class="text-xs text-gray-600 font-medium">WhatsApp</span>
+          <span class="text-sm text-gray-800 font-semibold">WhatsApp</span>
         </a>
 
         <!-- LinkedIn -->
@@ -57,7 +57,7 @@
           <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center icon-container">
             <LinkedinIcon class="w-4 h-4 text-blue-700" />
           </div>
-          <span class="text-xs text-gray-600 font-medium">LinkedIn</span>
+          <span class="text-sm text-gray-800 font-semibold">LinkedIn</span>
         </a>
 
         <!-- Email -->
@@ -69,7 +69,7 @@
           <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center icon-container">
             <MailIcon class="w-4 h-4 text-purple-600" />
           </div>
-          <span class="text-xs text-gray-600 font-medium">Email</span>
+          <span class="text-sm text-gray-800 font-semibold">Email</span>
         </a>
       </div>
     </div>
@@ -212,10 +212,11 @@ onUnmounted(() => {
 
 /* Animation du texte */
 .nav-item:hover span {
-  color: #8b5cf6;
-  text-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+  color: #6d28d9;
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
   transform: translateY(-1px);
   transition: all 0.3s ease;
+  font-weight: 700;
 }
 
 /* Effet de ripple au clic */

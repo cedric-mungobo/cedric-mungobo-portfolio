@@ -10,42 +10,84 @@
     <nav class="flex space-x-3 sm:space-x-8 text-sm sm:text-base nav-container">
       <a href="#hero" class="nav-link text-black hover:text-gray-600 transition-colors">Accueil</a>
       <button
-        @click="openSkillsModal"
         class="nav-link text-gray-500 hover:text-gray-600 transition-colors cursor-pointer"
+        @click="openSkillsModal"
       >
         Compétences
       </button>
       <a href="#projects" class="nav-link text-gray-500 hover:text-gray-600 transition-colors">Projets</a>
       <button
-        @click="openEducationModal"
         class="nav-link text-gray-500 hover:text-gray-600 transition-colors cursor-pointer"
+        @click="openEducationModal"
       >
         Éducation
       </button>
     </nav>
 
     <!-- Modal des compétences -->
-    <SkillsModal :isOpen="isSkillsModalOpen" @close="closeSkillsModal" />
+    <Dialog
+      v-model:visible="isSkillsModalOpen"
+      modal
+      header="Compétences Techniques"
+      :style="{ width: '90vw', maxWidth: '800px' }"
+      :breakpoints="{ '960px': '75vw', '641px': '95vw' }"
+      class="skills-modal"
+    >
+      <SkillsContent />
+      <template #footer>
+        <div class="flex justify-center">
+          <Button
+            label="Fermer"
+            severity="secondary"
+            class="px-6 py-2"
+            @click="closeSkillsModal"
+          />
+        </div>
+      </template>
+    </Dialog>
 
     <!-- Modal de l'éducation -->
-    <EducationModal :isOpen="isEducationModalOpen" @close="closeEducationModal" />
+    <Dialog
+      v-model:visible="isEducationModalOpen"
+      modal
+      header="Formation & Éducation"
+      :style="{ width: '90vw', maxWidth: '700px' }"
+      :breakpoints="{ '960px': '75vw', '641px': '95vw' }"
+      class="education-modal"
+    >
+      <EducationContent />
+      <template #footer>
+        <div class="flex justify-center">
+          <Button
+            label="Fermer"
+            severity="secondary"
+            class="px-6 py-2"
+            @click="closeEducationModal"
+          />
+        </div>
+      </template>
+    </Dialog>
   </header>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { Code as CodeIcon } from 'lucide-vue-next'
-import SkillsModal from './SkillsModal.vue'
-import EducationModal from './EducationModal.vue'
+import Dialog from 'primevue/dialog'
+import Button from 'primevue/button'
+import SkillsContent from './SkillsContent.vue'
+import EducationContent from './EducationContent.vue'
 
 // État du modal des compétences
 const isSkillsModalOpen = ref(false)
 
 const openSkillsModal = () => {
+  console.log('Opening skills modal')
   isSkillsModalOpen.value = true
 }
 
 const closeSkillsModal = () => {
+  console.log('Closing skills modal')
   isSkillsModalOpen.value = false
 }
 
@@ -53,10 +95,12 @@ const closeSkillsModal = () => {
 const isEducationModalOpen = ref(false)
 
 const openEducationModal = () => {
+  console.log('Opening education modal')
   isEducationModalOpen.value = true
 }
 
 const closeEducationModal = () => {
+  console.log('Closing education modal')
   isEducationModalOpen.value = false
 }
 </script>

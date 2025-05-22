@@ -12,11 +12,10 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxt/scripts',
-    '@nuxt/ui',
+    '@nuxt/ui'
   ],
 
-  css: ['~/assets/css/tailwind.css'],
-
+  css: ['~/assets/css/tailwind.css', '~/assets/css/primevue.css'],
   app: {
     head: {
       title: 'Cedric Mungobo - Développeur Full Stack',
