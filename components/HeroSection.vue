@@ -55,7 +55,7 @@
             <MessageCircleIcon class="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
           </a>
           <a
-            href="https://linkedin.com/in/cedricmungobo"
+            href="https://www.linkedin.com/in/cedric-mungobo-ab7728215"
             target="_blank"
             rel="noopener noreferrer"
             class="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-shadow cursor-pointer"

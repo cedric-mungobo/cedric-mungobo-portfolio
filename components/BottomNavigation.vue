@@ -48,7 +48,7 @@
 
         <!-- LinkedIn -->
         <a
-          href="https://linkedin.com/in/cedricmungobo"
+          href="https://www.linkedin.com/in/cedric-mungobo-ab7728215"
           target="_blank"
           rel="noopener noreferrer"
           class="flex flex-col items-center gap-1 p-2 rounded-xl nav-item transition-all duration-200 active:scale-95"
