@@ -40,15 +40,12 @@
         {{ project.technologies }}
       </div>
     </div>
-    <div class="flex justify-center">
-      <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-lg bg-white/10 flex items-center justify-center">
+    <div class="w-full">
+      <div class="w-full h-80 sm:h-80 md:h-80 rounded-lg bg-white/20 overflow-hidden border border-white/30">
         <img
           :src="project.image"
           :alt="project.title + ' mockup'"
-          class="rounded-md opacity-50"
-          width="100"
-          height="100"
-          style="max-width: 100%; height: auto;"
+          class="w-full h-full object-cover rounded-md opacity-90 hover:opacity-100 transition-opacity duration-300"
         >
       </div>
     </div>
@@ -212,9 +209,17 @@ onMounted(() => {
 
 /* Animation de l'image */
 .project-card:hover img {
-  transform: scale(1.1) rotate(2deg);
-  opacity: 0.8;
+  transform: scale(1.05) rotate(1deg);
+  opacity: 1;
   transition: all 0.3s ease;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+/* Amélioration du conteneur d'image au hover */
+.project-card:hover .bg-white\/20 {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Responsive adjustments */
